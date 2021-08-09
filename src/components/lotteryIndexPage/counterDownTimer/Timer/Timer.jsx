@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import TimeNode from './TimeNode';
 import S from './styles';
 
-const formatTime = (time) => {
+export const formatTime = (time) => {
   // get ISO hours minutes and seconds hh:mm:ss
   const t = new Date(0);
 

@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    'jest/globals': true,
   },
   extends: ['plugin:react/recommended', 'airbnb'],
   parserOptions: {
@@ -12,7 +13,7 @@ module.exports = {
     sourceType: 'module',
     parser: '@babel/eslint-parser',
   },
-  plugins: ['react'],
+  plugins: ['react', 'jest'],
   rules: {
     'padding-line-between-statements': [
       'error',
@@ -31,5 +32,10 @@ module.exports = {
     'no-param-reassign': 0,
     'arrow-body-style': ['error', 'always'],
     'react/prop-types': 'off',
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
   },
 };
