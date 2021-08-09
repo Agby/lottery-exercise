@@ -30,5 +30,6 @@ module.exports = {
     'no-trailing-spaces': ['error'],
     'no-param-reassign': 0,
     'arrow-body-style': ['error', 'always'],
+    'react/prop-types': 'off',
   },
 };

@@ -1,3 +1,5 @@
 import { lazy } from 'react';
 
-export default lazy(() => { return import('../components/lotteryIndexPage'); });
+export default lazy(() => {
+  return import('../components/LotteryIndexPage');
+});
