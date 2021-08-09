@@ -2,31 +2,35 @@ import React, { useEffect, useState } from 'react';
 import TimeNode from './TimeNode';
 import S from './styles';
 
-export const formatTime = (time) => {
+export const secondsToTime = (time) => {
   // get ISO hours minutes and seconds hh:mm:ss
   const t = new Date(0);
 
   t.setSeconds(time);
   const formattedTime = t.toISOString().substr(11, 8);
-
   const [hours, minutes, seconds] = formattedTime.split(':');
 
   return { hours, minutes, seconds };
 };
 
-export default ({ time }) => {
+export default ({ timer: { time, hash }, onTimesUp }) => {
   const [distance, setDistance] = useState(0);
 
   useEffect(() => {
     setDistance(time);
-  }, [time]);
+  }, [hash]);
 
   useEffect(() => {
     const countDownInterval = setInterval(() => {
       if (distance > 0) {
         setDistance(distance - 1);
-      } else {
+      }
+      if (distance <= 0) {
         clearInterval(countDownInterval);
+      }
+      // filter init times up
+      if (distance <= 0 && time > 0) {
+        onTimesUp();
       }
     }, 1000);
 
@@ -35,7 +39,7 @@ export default ({ time }) => {
     };
   }, [distance]);
 
-  const { hours, minutes, seconds } = formatTime(distance);
+  const { hours, minutes, seconds } = secondsToTime(distance);
 
   return (
     <S.TimerWrapper>

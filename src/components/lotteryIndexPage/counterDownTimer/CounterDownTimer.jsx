@@ -4,7 +4,7 @@ import S from './styles';
 
 export default () => {
   const [inputTime, setInputTime] = useState(0);
-  const [time, setTimer] = useState(0);
+  const [timer, setTimer] = useState({ time: 0, hash: Math.random() });
 
   const onHandleTelephoneChange = (e) => {
     const val = e.target.value;
@@ -17,13 +17,17 @@ export default () => {
 
     if (!regexp.test(inputTime)) {
       // eslint-disable-next-line no-alert
-      alert('You are so mean! plz let me go ~~');
+      alert('You are so mean!! Invalid input.');
 
       return;
     }
 
-    // minutes to seconds
-    setTimer(inputTime * 60);
+    // minutes to seconds hash for reset same time
+    setTimer({ time: inputTime * 60, hash: Math.random() });
+  };
+
+  const onTimesUp = () => {
+    console.log('times up');
   };
 
   return (
@@ -42,7 +46,7 @@ export default () => {
         </S.TimeSetterButton>
       </S.TimeSetterWrapper>
 
-      <Timer time={time} />
+      <Timer timer={timer} onTimesUp={onTimesUp} />
     </S.CounterDownTimerWrapper>
   );
 };

@@ -1,10 +1,10 @@
-import { formatTime } from '../Timer';
+import { secondsToTime } from '../Timer';
 
 describe('Timer', () => {
-  describe('formatTime', () => {
+  describe('secondsToTime', () => {
     it('Should work as expect', () => {
       const inputSeconds = 3735;
-      const { hours, minutes, seconds } = formatTime(inputSeconds);
+      const { hours, minutes, seconds } = secondsToTime(inputSeconds);
 
       expect(hours).toBe('01');
       expect(minutes).toBe('02');
@@ -13,7 +13,7 @@ describe('Timer', () => {
 
     it('Should work as expect if inputSeconds is zero', () => {
       const inputSeconds = 0;
-      const { hours, minutes, seconds } = formatTime(inputSeconds);
+      const { hours, minutes, seconds } = secondsToTime(inputSeconds);
 
       expect(hours).toBe('00');
       expect(minutes).toBe('00');
