@@ -6,10 +6,10 @@ export default {
     box-sizing: border-box;
     width: 50vw;
     min-width: 355px;
-    height: 500px;
     padding: 10px;
+    padding-left: 10vw;
   `,
-  Title: styled.h3`
+  Title: styled.h2`
     color: ${warrior};
   `,
   TimeSetterWrapper: styled.div`

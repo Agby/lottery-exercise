@@ -10,7 +10,7 @@ export default () => {
 
   useEffect(() => {
     dispatch(fetchAttendeeActions.request({ group: 'groupA' }));
-  }, [dispatch]);
+  }, []);
 
   return (
     <S.LotteryContainer>

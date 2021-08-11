@@ -6,7 +6,7 @@ import LotteryResultPage from './pages/LotteryResultPage';
 const App = () => {
   return (
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<p>Loading...</p>}>
         <Switch>
           <Route exact path="/" component={LotteryIndexPage} />
           <Route path="/result" component={LotteryResultPage} />

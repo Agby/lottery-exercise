@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Timer from './Timer';
 import S from './styles';
 
 export default () => {
   const [inputTime, setInputTime] = useState(0);
   const [timer, setTimer] = useState({ time: 0, hash: Math.random() });
+  const history = useHistory();
 
   const onHandleTelephoneChange = (e) => {
     const val = e.target.value;
@@ -29,7 +31,7 @@ export default () => {
   };
 
   const onTimesUp = () => {
-    console.log('times up');
+    history.push('/result', { resultId: 'steve' });
   };
 
   return (

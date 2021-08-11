@@ -1,5 +1,6 @@
 import produce from 'immer';
 import { getType, createAsyncAction } from 'typesafe-actions';
+import makeAttendeeList from '../selector/processAttendeeList';
 
 export const fetchAttendeeActions = createAsyncAction(
   'list/GET_ATTENDEE',
@@ -8,30 +9,34 @@ export const fetchAttendeeActions = createAsyncAction(
 )();
 
 export const defaultState = {
-  isLoading: false,
-  attendee: [
-    { id: 'foo', name: 'Tim' },
-    { id: 'bar', name: 'jenny' },
-  ],
+  isFetching: false,
+  attendeeIds: ['alpha', 'beta'],
+  attendeeDetails: {
+    alpha: { name: 'Tim' },
+    beta: { name: 'Jessica' },
+  },
   hasError: false,
 };
 
 export default produce((draft, actions) => {
   switch (actions.type) {
     case getType(fetchAttendeeActions.request): {
-      draft.isLoading = true;
+      draft.isFetching = true;
       break;
     }
     case getType(fetchAttendeeActions.success): {
       const { attendee = [] } = actions?.payload;
 
+      const { attendeeIds, attendeeDetails } = makeAttendeeList(attendee)();
+
       draft.hasError = false;
-      draft.isLoading = false;
-      draft.attendee = [...attendee];
+      draft.isFetching = false;
+      draft.attendeeIds = attendeeIds;
+      draft.attendeeDetails = attendeeDetails;
       break;
     }
     case getType(fetchAttendeeActions.failure): {
-      draft.isLoading = false;
+      draft.isFetching = false;
       draft.hasError = true;
       break;
     }
