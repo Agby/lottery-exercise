@@ -21,9 +21,11 @@ export default () => {
 
       return;
     }
+    // minutes to seconds
+    const time = inputTime * 60;
 
-    // minutes to seconds hash for reset same time
-    setTimer({ time: inputTime * 60, hash: Math.random() });
+    // hash for force trigger when reset same input
+    setTimer({ time, hash: Math.random() });
   };
 
   const onTimesUp = () => {

@@ -1,5 +1,5 @@
 import { lazy } from 'react';
 
 export default lazy(() => {
-  return import('../components/AttendeeDetailPage');
+  return import('../components/LotteryResultPage');
 });
