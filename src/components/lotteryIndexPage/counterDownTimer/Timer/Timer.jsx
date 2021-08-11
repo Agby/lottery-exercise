@@ -13,12 +13,13 @@ export const secondsToTime = (time) => {
   return { hours, minutes, seconds };
 };
 
-export default ({ timer: { time, hash }, onTimesUp }) => {
+export default ({ timer, onTimesUp }) => {
   const [distance, setDistance] = useState(0);
+  const { time } = timer;
 
   useEffect(() => {
     setDistance(time);
-  }, [hash]);
+  }, [timer]);
 
   useEffect(() => {
     const countDownInterval = setInterval(() => {

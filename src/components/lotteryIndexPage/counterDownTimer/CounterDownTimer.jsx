@@ -5,7 +5,7 @@ import S from './styles';
 
 export default () => {
   const [inputTime, setInputTime] = useState(0);
-  const [timer, setTimer] = useState({ time: 0, hash: Math.random() });
+  const [timer, setTimer] = useState({ time: 0 });
   const history = useHistory();
 
   const onHandleTelephoneChange = (e) => {
@@ -27,7 +27,7 @@ export default () => {
     const time = inputTime * 60;
 
     // hash for force trigger when reset same input
-    setTimer({ time, hash: Math.random() });
+    setTimer({ time });
   };
 
   const onTimesUp = () => {
